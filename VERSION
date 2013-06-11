@@ -1,3 +1,10 @@
+v0.3.2:
+=======
+
+	Fixing the spelling of "length" in --help (thanks terriko)
+	Fixed sendCredential() call in HTTP plugin (thanks hatRiot)
+	Added the option to enable showing pattern or not (thanks hatRiot)
+
 v0.3.1:
 =======
 

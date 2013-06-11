@@ -7,7 +7,7 @@ from functions import *
 # Blog: www.localh0t.com.ar
 
 # Version
-VERSION = "0.3"
+VERSION = "0.3.2"
 
 # Plugin read class
 class Plugins:
@@ -42,17 +42,18 @@ def showHelp():
 	print "\nArguments (Normal Plugins):\n===========================\n"
 	print "-h   [IP]" + colors.RED + " [Required] " + colors.ENDC
 	print "-p   [PORT]" + colors.RED + " [Required] " + colors.ENDC
-	print "-min [START LENGHT]" + colors.RED + " [Required] " + colors.ENDC
-	print "-max [END LENGHT]" + colors.RED + " [Required] " + colors.ENDC
+	print "-min [START LENGTH]" + colors.RED + " [Required] " + colors.ENDC
+	print "-max [END LENGTH]" + colors.RED + " [Required] " + colors.ENDC
 	print "-s   [SALT BETWEEN FUZZ STRINGS]" + colors.RED + " [Required] " + colors.ENDC
 	print "-pl  [PLUGIN TO USE]" + colors.RED + " [Required] " + colors.ENDC
 	print "-pf  [PATTERN-FLAVOUR TO USE (default: Cyclic)]" + colors.GREEN + " [Optional] " + colors.ENDC
 	print "-t   [TIMEOUT (Seconds) (default: 0.8)]" + colors.GREEN + " [Optional] " + colors.ENDC
+	print "-S   [SHOW PATTERN ON CRASH (default: False)]" + colors.GREEN + " [Optional] " + colors.ENDC 
 	print "\nArguments (Special Plugins):\n============================\n"
 	print "-SPECIAL" + colors.RED + " [Required] " + colors.ENDC
 	print "-pl [SPECIAL PLUGIN TO USE]" + colors.RED + " [Required] " + colors.ENDC
-	print "-min [START LENGHT]" + colors.RED + " [Required] " + colors.ENDC
-	print "-max [END LENGHT]" + colors.RED + " [Required] " + colors.ENDC
+	print "-min [START LENGTH]" + colors.RED + " [Required] " + colors.ENDC
+	print "-max [END LENGTH]" + colors.RED + " [Required] " + colors.ENDC
 	print "-s [SALT BETWEEN FUZZ STRINGS]" + colors.RED + " [Required] " + colors.ENDC
 	print "-pf [PATTERN-FLAVOUR TO USE (default: Cyclic)]" + colors.GREEN + " [Optional] " + colors.ENDC
 	print "\nPattern Flavours are:\n=====================\n"
@@ -74,6 +75,7 @@ def readArgs(arguments):
 	count = 0
 	globalvars.timeout = 0.8
 	globalvars.pattern_flavour = "Cyclic"
+	globalvars.show_pattern    = False 
 	for arg in arguments:
 		try:
 			if arg == "-h":
@@ -92,6 +94,8 @@ def readArgs(arguments):
 				globalvars.pattern_flavour = arguments[count + 1]
 			elif arg == "-t":
 				globalvars.timeout = strToFloat(arguments[count + 1], "-t")
+			elif arg == '-S':
+				globalvars.show_pattern = True 
 			count += 1
 		except:
 			exitProgram(3)
