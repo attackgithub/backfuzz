@@ -276,7 +276,6 @@ def showPayload(pattern,length):
 	print "Port: " + str(globalvars.port)
 	print "Type: " + globalvars.plugin_use
 	print "Connection refused at: " + str(length)
-	print "\nPayload:\n========\n"
 	if globalvars.show_pattern:
 		print "\nPayload:\n========\n"
 		print pattern
